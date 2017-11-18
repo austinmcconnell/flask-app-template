@@ -41,7 +41,7 @@ Deployment To Heroku
 
 ### Authenticate with `heroku login`
  You only need to do this once.
- 
+
  	heroku login
 
 ### Create Heroku Project
@@ -57,8 +57,8 @@ Note: you can leave the project name off and just use `heroku create` and you'll
 This will tell Heroku to install all devDependencies as well as the dependencies in your package.json file.
 
 
-	heroku config:set FLASK_APP=autoapp.py FLASK_DEBUG=0   
-   
+	heroku config:set FLASK_APP=autoapp.py FLASK_DEBUG=0
+
 This sets the pertinent Flask env variables on your heroku dyno.
 
 ### Use Webpack to Build Static Assets on Deploy
@@ -66,7 +66,7 @@ This sets the pertinent Flask env variables on your heroku dyno.
 If you intend to use webpack to build your static assets on deploy to Heroku, make sure the following line is added to your package.json file under `scripts`
 
 	    "postinstall": "npm run build"
-	    
+
 Example
 
 ```js
@@ -83,7 +83,7 @@ Example
 ### Push code to Heroku
 
 	git push heroku master
-	
+
 ### (Optional) Set Up Auto-Deploy From Github
 TODO: Fill in instructions.
 
@@ -93,6 +93,19 @@ TODO: Fill in instructions.
 	heroku addons:create heroku-postgresql:hobby-dev
 
 hobby-dev is a free postgres instance limited to 10,000 rows.
+
+Add-Ons
+-------
+
+### Rollbar
+
+Signup for a free account at [Rollbar](https://rollbar.com)
+
+    heroku addons:create rollbar
+    heroku addons:open rollbar
+
+Optionally Set up Github integration and Deploy hooks
+
 Shell
 -----
 
