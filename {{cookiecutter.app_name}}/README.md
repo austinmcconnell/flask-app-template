@@ -87,6 +87,12 @@ Example
 ### (Optional) Set Up Auto-Deploy From Github
 TODO: Fill in instructions.
 
+
+### Setup Heroku-Postgres Hobby-Dev Database
+
+	heroku addons:create heroku-postgresql:hobby-dev
+
+hobby-dev is a free postgres instance limited to 10,000 rows.
 Shell
 -----
 
