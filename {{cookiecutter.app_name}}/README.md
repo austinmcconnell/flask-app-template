@@ -23,22 +23,30 @@ Run the following commands to bootstrap your environment :
 
 You will see a pretty welcome screen.
 
+Generate a secret key like this
+
+```python
+import secrets
+secrets.token_hex(20)
+```
+Take the token from above and use it for the
 Setup an .env file containing the following information
 
 ```ini
 # Flask
 FLASK_APP=autoapp.py
 FLASK_DEBUG=1
+{{cookiecutter.app_name}}_SECRET = secret_token_from_above
 
 # Node
 NODE_ENV=development
 NPM_CONFIG_PRODUCTION=false
 
 # Database
-DB_USERNAME=username  # TODO: Change me
-DB_PASSWORD=password  # TODO: Change me
-DB_HOST=host  # TODO: Change me
-DB_NAME=port  # TODO: Change me
+DB_USERNAME=username
+DB_PASSWORD=password
+DB_HOST=host
+DB_NAME=port
 ```
 
 Once you have installed your DBMS, run the following to create your
