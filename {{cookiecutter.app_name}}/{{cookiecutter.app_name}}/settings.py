@@ -20,7 +20,7 @@ class Config(object):
 class ProdConfig(Config):
     """Production configuration."""
 
-    ENV = 'prod'
+    ENV = 'production'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/example'  # TODO: Change me
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
@@ -30,7 +30,7 @@ class ProdConfig(Config):
 class DevConfig(Config):
     """Development configuration."""
 
-    ENV = 'dev'
+    ENV = 'development'
     DEBUG = True
     DB_NAME = 'dev.db'
     # Put the db file in project root
