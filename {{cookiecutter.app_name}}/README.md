@@ -61,6 +61,32 @@ This will tell Heroku to install all devDependencies as well as the dependencies
    
 This sets the pertinent Flask env variables on your heroku dyno.
 
+### Use Webpack to Build Static Assets on Deploy
+
+If you intend to use webpack to build your static assets on deploy to Heroku, make sure the following line is added to your package.json file under `scripts`
+
+	    "postinstall": "npm run build"
+	    
+Example
+
+```js
+  "scripts": {
+    "build": "NODE_ENV=production webpack --progress --colors -p",
+    "start": "concurrently -n \"WEBPACK,FLASK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run webpack-dev-server\" \"npm run flask-server\"",
+    "webpack-dev-server": "NODE_ENV=debug webpack-dev-server --port 2992 --hot --inline",
+    "flask-server": "FLASK_APP=$PWD/autoapp.py FLASK_DEBUG=1 flask run",
+    "lint": "eslint \"assets/js/*.js\"",
+    "postinstall": "npm run build"
+  }
+```
+
+### Push code to Heroku
+
+	git push heroku master
+	
+### (Optional) Set Up Auto-Deploy From Github
+TODO: Fill in instructions.
+
 Shell
 -----
 
