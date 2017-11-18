@@ -27,12 +27,13 @@ def create_app(config_object=ProdConfig):
     @app.before_first_request
     def init_rollbar():
         """init rollbar module"""
-        rollbar.init(access_token=config_object['ROLLBAR_API'],
-                     environment=config_object['ENV'],
-                     root=config_object['APP_DIR'],
-                     allow_logging_basic_config=False)
+        if app.config['ENV'] in ('production',):
+            rollbar.init(access_token=app.config['ROLLBAR_API'],
+                         environment=app.config['ENV'],
+                         root=app.config['APP_DIR'],
+                         allow_logging_basic_config=False)
 
-        got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+            got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
     return app
 
