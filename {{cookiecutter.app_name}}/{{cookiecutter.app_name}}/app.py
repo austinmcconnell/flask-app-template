@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
-from flask import Flask, render_template
 
-from {{cookiecutter.app_name}} import commands, public, user
-from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack
-from {{cookiecutter.app_name}}.settings import ProdConfig
+from flask import Flask, render_template, got_request_exception
+
+import rollbar
+import rollbar.contrib.flask
+
+from appraisal_view_app import commands, public, user
+from appraisal_view_app.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack
+from appraisal_view_app.settings import ProdConfig
 
 
 def create_app(config_object=ProdConfig):
@@ -19,6 +23,17 @@ def create_app(config_object=ProdConfig):
     register_errorhandlers(app)
     register_shellcontext(app)
     register_commands(app)
+
+    @app.before_first_request
+    def init_rollbar():
+        """init rollbar module"""
+        rollbar.init(access_token=config_object['ROLLBAR_API'],
+                     environment=config_object['ENV'],
+                     root=config_object['APP_DIR'],
+                     allow_logging_basic_config=False)
+
+        got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+
     return app
 
 
