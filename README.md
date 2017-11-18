@@ -56,23 +56,6 @@ License
 
 BSD licensed.
 
-Changelog
----------
-
-### 0.13.0 (06/25/2017)
-
--   Use webpack for building front-end assets. Front-end dependencies
-    are installed with NPM. Remove Flask-Assets and bower.json. Thanks
-    [@wroberts].
-
-### 0.12.0 (11/06/2016)
-
--   Update Python dependencies.
-
-### 0.11.1 (11/06/2016)
-
--   Correctly pass first parameter to `Flask` according to the
-
   [cookiecutter]: https://github.com/audreyr/cookiecutter
   [Build Status]: https://travis-ci.org/austinmcconnell/cookiecutter-flask.svg
   [![Build Status]]: https://travis-ci.org/austinmcconnell/cookiecutter-flask
