@@ -6,7 +6,7 @@
 Quickstart
 ----------
 
-First, set your app\'s secret key as an environment variable. For
+First, set your app's secret key as an environment variable. For
 example, add the following to `.bashrc` or `.bash_profile`.
 
 ``` {.sourceCode .bash}
@@ -29,19 +29,37 @@ app\'s database tables and perform the initial migration :
     flask db init
     flask db migrate
     flask db upgrade
-    npm start
 
-Deployment
-----------
+Deployment To Heroku
+--------------------
 
-To deploy:
+### Install Heroku Toolbelt
 
-    export FLASK_DEBUG=0
-    npm run build   # build assets with webpack
-    flask run       # start the flask server
 
-In your production environment, make sure the `FLASK_DEBUG` environment
-variable is unset or is set to `0`, so that `ProdConfig` is used.
+	brew install heroku
+
+
+### Authenticate with `heroku login`
+ You only need to do this once.
+ 
+ 	heroku login
+
+### Create Heroku Project
+
+	heroku create {{ cookiecutter.project_name }}
+
+Note: you can leave the project name off and just use `heroku create` and you'll get a randomly named app.
+
+### Set Environment Variables
+
+	heroku config:set NODE_ENV=development NPM_CONFIG_PRODUCTION=false
+
+This will tell Heroku to install all devDependencies as well as the dependencies in your package.json file.
+
+
+	heroku config:set FLASK_APP=autoapp.py FLASK_DEBUG=0   
+   
+This sets the pertinent Flask env variables on your heroku dyno.
 
 Shell
 -----
