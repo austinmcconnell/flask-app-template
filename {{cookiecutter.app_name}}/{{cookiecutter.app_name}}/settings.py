@@ -22,8 +22,18 @@ class ProdConfig(Config):
 
     ENV = 'production'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/example'  # TODO: Change me
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
+    DATABASE_URL = os.getenv('DATABASE_URL')
+
+    if DATABASE_URL:
+        SQLALCHEMY_DATABASE_URI = DATABASE_URL
+    else:
+        DB_USERNAME = os.getenv('DB_USERNAME')
+        DB_PASSWORD = os.getenv('DB_PASSWORD')
+        DB_HOST = os.getenv('DB_HOST')
+        DB_PORT = os.getenv('DB_PORT', 5432)
+        DB_NAME = os.getenv('DB_NAME')
+        SQLALCHEMY_DATABASE_URI = f'postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
     ROLLBAR_API = 'api_string'  # TODO: Change me
 
 
