@@ -6,7 +6,7 @@ import os
 class Config(object):
     """Base configuration."""
 
-    SECRET_KEY = os.environ.get('{{cookiecutter.app_name | upper}}_SECRET')  # TODO: Change me
+    SECRET_KEY = os.environ.get('{{cookiecutter.app_name | upper}}_SECRET')
     APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     BCRYPT_LOG_ROUNDS = 13

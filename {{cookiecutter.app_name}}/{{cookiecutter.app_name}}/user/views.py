@@ -3,7 +3,10 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
 
-blueprint = Blueprint('user', __name__, url_prefix='/users', static_folder='../static')  # pylint: disable=invalid-name
+blueprint = Blueprint(name='user',  # pylint: disable=invalid-name
+                      import_name=__name__,
+                      url_prefix='/users',
+                      static_folder='../static')
 
 
 @blueprint.route('/')

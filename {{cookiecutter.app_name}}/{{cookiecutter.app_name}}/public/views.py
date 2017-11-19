@@ -9,7 +9,9 @@ from {{cookiecutter.app_name}}.user.forms import RegisterForm
 from {{cookiecutter.app_name}}.user.models import User
 from {{cookiecutter.app_name}}.utils import flash_errors
 
-blueprint = Blueprint('public',__name__, static_folder='../static')  # pylint: disable=invalid-name
+blueprint = Blueprint(name='public',  # pylint: disable=invalid-name
+                      import_name=__name__,
+                      static_folder='../static')
 
 
 @login_manager.user_loader
