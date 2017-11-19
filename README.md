@@ -1,7 +1,11 @@
 cookiecutter-flask
 ==================
 
-A Flask template for [cookiecutter].
+An opinionated Flask template for [cookiecutter] that includes:
+
+* support for Postgres database
+* deployment to Heroku
+* Rollbar integration
 
 [![Travis][travis_logo]][travis_link]
 
