@@ -6,9 +6,9 @@ from flask import Flask, render_template, got_request_exception
 import rollbar
 import rollbar.contrib.flask
 
-from {{ cookiecutter.project_name }} import commands, public, user
-from {{ cookiecutter.project_name }}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack
-from {{ cookiecutter.project_name }}.settings import ProdConfig
+from {{ cookiecutter.app_name }} import commands, public, user
+from {{ cookiecutter.app_name }}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack
+from {{ cookiecutter.app_name }}.settings import ProdConfig
 
 
 def create_app(config_object=ProdConfig):
