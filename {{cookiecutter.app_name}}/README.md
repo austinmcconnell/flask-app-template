@@ -1,7 +1,7 @@
-{{ cookiecutter.project\_name }}
+{{ cookiecutter.project_name }}
 ================================
 
-{{ cookiecutter.project\_short\_description}}
+{{ cookiecutter.project_short_description}}
 
 Quickstart
 ----------
