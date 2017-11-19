@@ -9,7 +9,7 @@ Quickstart
 First, set your app's secret key as an environment variable. For
 example, add the following to `.bashrc` or `.bash_profile`.
 
-``` {.sourceCode .bash}
+```bash
 export {{cookiecutter.app_name | upper}}_SECRET='something-really-secret'
 ```
 
@@ -36,7 +36,7 @@ Setup an .env file containing the following information
 # Flask
 FLASK_APP=autoapp.py
 FLASK_DEBUG=1
-{{cookiecutter.app_name}}_SECRET = secret_token_from_above
+{{cookiecutter.app_name | upper}}_SECRET = secret_token_from_above
 
 # Node
 NODE_ENV=development
