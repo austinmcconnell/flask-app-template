@@ -12,7 +12,8 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(HERE, 'cookiecutter.json'), 'r') as fp:
     COOKIECUTTER_SETTINGS = json.load(fp)
 # Match default value of app_name from cookiecutter.json
-COOKIE = os.path.join(HERE, COOKIECUTTER_SETTINGS['app_name'])
+APP_NAME = COOKIECUTTER_SETTINGS["app_name"]
+COOKIE = os.path.join(HERE, APP_NAME)
 AUTOAPP = os.path.join(COOKIE, 'autoapp.py')
 REQUIREMENTS = os.path.join(COOKIE, 'requirements', 'dev.txt')
 
@@ -28,7 +29,6 @@ def build(ctx):
     """Build the cookiecutter."""
     ctx.run('cookiecutter {0} --no-input'.format(HERE))
     _run_npm_command(ctx, 'install')
-    _run_npm_command(ctx, 'run build')
 
 
 @task
@@ -42,7 +42,7 @@ def clean(ctx):
 
 
 def _run_flask_command(ctx, command):
-    ctx.run('FLASK_APP={0} flask {1}'.format(AUTOAPP, command), echo=True)
+    ctx.run(f'{APP_NAME.upper()}_SECRET=tardis FLASK_APP={AUTOAPP} flask {command}', echo=True)
 
 
 @task(pre=[clean, build])
