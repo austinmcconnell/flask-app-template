@@ -9,6 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_webpack import Webpack
 from flask_wtf.csrf import CSRFProtect
 
+# pylint: disable=invalid-name
+
 bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
 login_manager = LoginManager()

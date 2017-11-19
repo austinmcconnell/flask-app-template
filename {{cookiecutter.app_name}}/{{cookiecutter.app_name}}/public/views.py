@@ -9,7 +9,7 @@ from {{cookiecutter.app_name}}.user.forms import RegisterForm
 from {{cookiecutter.app_name}}.user.models import User
 from {{cookiecutter.app_name}}.utils import flash_errors
 
-blueprint = Blueprint('public', __name__, static_folder='../static')
+blueprint = Blueprint('public',__name__, static_folder='../static')  # pylint: disable=invalid-name
 
 
 @login_manager.user_loader
@@ -48,7 +48,10 @@ def register():
     """Register new user."""
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        User.create(username=form.username.data, email=form.email.data, password=form.password.data, active=True)
+        User.create(username=form.username.data,
+                    email=form.email.data,
+                    password=form.password.data,
+                    active=True)
         flash('Thank you for registering. You can now log in.', 'success')
         return redirect(url_for('public.home'))
     else:

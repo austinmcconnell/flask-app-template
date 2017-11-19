@@ -3,8 +3,8 @@
 from .extensions import db
 
 # Alias common SQLAlchemy names
-Column = db.Column
-relationship = db.relationship
+Column = db.Column  # pylint: disable=invalid-name
+relationship = db.relationship  # pylint: disable=invalid-name
 
 
 class CRUDMixin(object):
@@ -48,7 +48,7 @@ class SurrogatePK(object):
 
     __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)  # pylint: disable=invalid-name
 
     @classmethod
     def get_by_id(cls, record_id):
