@@ -23,10 +23,9 @@ def test():
 
 
 @click.command()
-@click.option('-f', '--fix-imports', default=False, is_flag=True,help='Fix imports using isort, before linting')
-def lint(fix_imports):
-    """Lint and check code style with flake8 and isort."""
-    skip = ['node_modules', 'requirements']
+def lint():
+    """Lint and check code style with pylint."""
+    skip = ['node_modules']
     root_files = glob('*.py')
     root_directories = [name for name in next(os.walk('.'))[1] if not name.startswith('.')]
     files_and_directories = [arg for arg in root_files + root_directories if arg not in skip]
@@ -38,9 +37,6 @@ def lint(fix_imports):
         status_code = call(command_line)
         if status_code != 0:
             exit(status_code)
-
-    if fix_imports:
-        execute_tool('Fixing import order', 'isort', '-rc')
     execute_tool('Checking code style', 'pylint')
 
 
