@@ -6,7 +6,8 @@ env:
 python:
   - 3.6
 install:
-  - pip install -r requirements/dev.txt
+  - pip install pipenv
+  - pipenv install --dev
   - nvm install 8.9.1
   - nvm use 8.9.1
   - npm install
