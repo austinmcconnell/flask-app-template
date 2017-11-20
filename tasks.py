@@ -47,9 +47,11 @@ def _run_flask_command(ctx, command):
 @task(pre=[clean, build], post=[clean])
 def test(ctx):
     """Run lint commands and tests."""
-    ctx.run('cd myflaskapp', echo=True)
+    ctx.run('cp myflaskapp/Pipfile .', echo=True)
+    ctx.run('cp myflaskapp/Pipfile.lock .', echo=True)
     ctx.run('pipenv install --dev', echo=True)
-    ctx.run('cd ..', echo=True)
+    ctx.run('rm Pipfile', echo=True)
+    ctx.run('rm Pipfile.lock', echo=True)
     _run_npm_command(ctx, 'run lint')
     os.chdir(COOKIE)
     _run_flask_command(ctx, 'lint')
