@@ -65,13 +65,13 @@ enable= bad-continuation,
         pointless-statement,
         invalid-name,
         duplicate-code
-        #line-too-long                # September 1st, 2017
-        #bad-indentation              # September 1st, 2017
-        #wildcard-import              # September 1st, 2017
-        #bad-except-order             # October 1st, 2017
-        #bad-format-string            # October 1st, 2017
-        #unsupported-membership-test, # October 1st, 2017
-        #redefined-builtin            # November 1st, 2017
+        line-too-long
+        bad-indentation
+        wildcard-import
+        bad-except-order
+        bad-format-string
+        unsupported-membership-test
+        redefined-builtin
 
 
 [REPORTS]
