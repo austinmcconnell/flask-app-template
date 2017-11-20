@@ -15,7 +15,6 @@ with open(os.path.join(HERE, 'cookiecutter.json'), 'r') as fp:
 APP_NAME = COOKIECUTTER_SETTINGS["app_name"]
 COOKIE = os.path.join(HERE, APP_NAME)
 AUTOAPP = os.path.join(COOKIE, 'autoapp.py')
-REQUIREMENTS = os.path.join(COOKIE, 'requirements', 'dev.txt')
 
 
 def _run_npm_command(ctx, command):
@@ -48,8 +47,7 @@ def _run_flask_command(ctx, command):
 @task(pre=[clean, build])
 def test(ctx):
     """Run lint commands and tests."""
-    ctx.run('pip install -r {0} --ignore-installed'.format(REQUIREMENTS),
-            echo=True)
+    ctx.run('pipenv install --dev', echo=True)
     _run_npm_command(ctx, 'run lint')
     os.chdir(COOKIE)
     _run_flask_command(ctx, 'lint')

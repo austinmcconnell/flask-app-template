@@ -5,6 +5,7 @@ cache: pip
 python:
   - 3.6
 install:
+  - pip install pipenv
   - pip install cookiecutter
   - pip install invoke==0.14.0
   - nvm install 8.9.1
