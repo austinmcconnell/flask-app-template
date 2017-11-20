@@ -44,10 +44,12 @@ def _run_flask_command(ctx, command):
     ctx.run(f'{APP_NAME.upper()}_SECRET=tardis FLASK_APP={AUTOAPP} flask {command}', echo=True)
 
 
-@task(pre=[clean, build])
+@task(pre=[clean, build], post=[clean])
 def test(ctx):
     """Run lint commands and tests."""
+    ctx.run('cd myflaskapp', echo=True)
     ctx.run('pipenv install --dev', echo=True)
+    ctx.run('cd ..', echo=True)
     _run_npm_command(ctx, 'run lint')
     os.chdir(COOKIE)
     _run_flask_command(ctx, 'lint')
