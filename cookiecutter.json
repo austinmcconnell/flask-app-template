@@ -4,7 +4,7 @@
 	"github_username": "austinmcconnell",
 	"project_name": "My Flask App",
 	"app_name": "myflaskapp",
-	"project_short_description": "A flasky app."
+	"project_short_description": "A flasky app.",
 	"integrations": "The following integrations are optional [enter to continue]",
   	"rollbar_access_token": "",
 	"papertrail_api_token": ""
