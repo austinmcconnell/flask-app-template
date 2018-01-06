@@ -26,7 +26,7 @@ def _run_npm_command(ctx, command):
 @task
 def build(ctx):
     """Build the cookiecutter."""
-    ctx.run('cookiecutter {0} --no-input'.format(HERE))
+    ctx.run(f'cookiecutter {HERE} --no-input')
     _run_npm_command(ctx, 'install')
 
 
@@ -48,7 +48,6 @@ def _run_flask_command(ctx, command):
 def test(ctx):
     """Run lint commands and tests."""
     ctx.run('cp myflaskapp/Pipfile .', echo=True)
-    ctx.run('cp myflaskapp/Pipfile.lock .', echo=True)
     ctx.run('pipenv install --dev', echo=True)
     ctx.run('rm Pipfile', echo=True)
     ctx.run('rm Pipfile.lock', echo=True)
