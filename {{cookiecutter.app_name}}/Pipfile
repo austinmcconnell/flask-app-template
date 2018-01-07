@@ -12,20 +12,25 @@ flask-bcrypt = "*"
 flask-caching = "*"
 flask-debugtoolbar = "*"
 flask-login = "*"
+flask-mail = "*"
 flask-migrate = "*"
 flask-sqlalchemy = "*"
 flask-webpack = "*"
 flask-wtf = "*"
-psycopg2 = "*"
-rollbar = "*"
 gunicorn = "*"
+psycopg2 = "*"
+pyjwt = "*"
+rollbar = "*"
 
 
 [dev-packages]
-pytest= "*"
-webtest= "*"
-factory-boy= "*"
-pylint= "*"
+
+factory-boy = "*"
+pylint = "*"
+pytest = "*"
+webtest = "*"
+
 
 [requires]
+
 python_version = "3.6"
